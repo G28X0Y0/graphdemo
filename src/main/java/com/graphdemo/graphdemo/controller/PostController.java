@@ -9,6 +9,9 @@ import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.UUID;
@@ -25,6 +28,7 @@ public class PostController {
     }
 
     @QueryMapping
+    @GetMapping("/recentPosts")
     public List<Post> recentPosts(@Argument int count, @Argument int offset) {
         return postDao.getRecentPosts(count, offset);
     }
@@ -40,7 +44,8 @@ public class PostController {
     }
 
     @MutationMapping
-    public Post createPost(@Argument String title, @Argument String text,
+    @PostMapping("/createPost")
+    public Post createPost(@RequestBody @Argument String title, @Argument String text,
                            @Argument String category, @Argument String authorId) {
         Post post = new Post();
         post.setId(UUID.randomUUID().toString());
@@ -49,6 +54,7 @@ public class PostController {
         post.setCategory(category);
         post.setAuthorId(authorId);
         postDao.savePost(post);
+        postDao.createPost(title, text, category, authorId);
 
         return post;
     }

@@ -3,6 +3,7 @@ package com.graphdemo.graphdemo.dao;
 import com.graphdemo.graphdemo.model.Post;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class PostDao {
@@ -27,6 +28,21 @@ public class PostDao {
 
     public void savePost(Post post) {
         posts.add(post);
+    }
+
+    public void deletePost(Post post) {
+        posts.remove(post);
+    }
+
+    public Post createPost(String title, String text, String category, String authorId) {
+        Post post = new Post();
+        post.setId(UUID.randomUUID().toString());
+        post.setTitle(title);
+        post.setText(text);
+        post.setCategory(category);
+        post.setAuthorId(authorId);
+        posts.add(post);
+        return post;
     }
 
 }

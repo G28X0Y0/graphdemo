@@ -3,18 +3,19 @@ package com.graphdemo.graphdemo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
-@SpringBootApplication
-@EnableAutoConfiguration(exclude = {
+@SpringBootApplication(exclude = {
 		SecurityAutoConfiguration.class,
-		HibernateJpaAutoConfiguration.class
+		HibernateJpaAutoConfiguration.class,
+		DataSourceAutoConfiguration.class
 })
-public class GraphdemoApplication {
+public class GraphDemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GraphdemoApplication.class, args);
+		SpringApplication.run(GraphDemoApplication.class, args);
 	}
 
 }

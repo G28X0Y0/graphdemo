@@ -1,8 +1,8 @@
-package com.graphdemo.graphdemo.controller;
+package com.graphdemo.graphql.controller;
 
-import com.graphdemo.graphdemo.dao.PostDao;
-import com.graphdemo.graphdemo.model.Author;
-import com.graphdemo.graphdemo.model.Post;
+import com.graphdemo.graphql.dao.PostDao;
+import com.graphdemo.graphql.model.Author;
+import com.graphdemo.graphql.model.Post;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
 

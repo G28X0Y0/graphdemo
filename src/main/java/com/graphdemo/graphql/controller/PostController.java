@@ -1,15 +1,14 @@
-package com.graphdemo.graphdemo.controller;
+package com.graphdemo.graphql.controller;
 
-import com.graphdemo.graphdemo.dao.AuthorDao;
-import com.graphdemo.graphdemo.dao.PostDao;
-import com.graphdemo.graphdemo.model.Author;
-import com.graphdemo.graphdemo.model.Post;
+import com.graphdemo.graphql.dao.AuthorDao;
+import com.graphdemo.graphql.dao.PostDao;
+import com.graphdemo.graphql.model.Author;
+import com.graphdemo.graphql.model.Post;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -28,7 +27,7 @@ public class PostController {
     }
 
     @QueryMapping
-    @GetMapping("/recentPosts")
+    @PostMapping("/graphql")
     public List<Post> recentPosts(@Argument int count, @Argument int offset) {
         return postDao.getRecentPosts(count, offset);
     }
@@ -44,7 +43,7 @@ public class PostController {
     }
 
     @MutationMapping
-    @PostMapping("/createPost")
+    @PostMapping("/graphql")
     public Post createPost(@RequestBody @Argument String title, @Argument String text,
                            @Argument String category, @Argument String authorId) {
         Post post = new Post();

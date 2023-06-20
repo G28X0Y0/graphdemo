@@ -1,6 +1,6 @@
-package com.graphdemo.graphdemo.dao;
+package com.graphdemo.graphql.dao;
 
-import com.graphdemo.graphdemo.model.Author;
+import com.graphdemo.graphql.model.Author;
 
 import java.util.List;
 

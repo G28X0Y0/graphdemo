@@ -1,6 +1,6 @@
-package com.graphdemo.graphdemo.dao;
+package com.graphdemo.graphql.dao;
 
-import com.graphdemo.graphdemo.model.Post;
+import com.graphdemo.graphql.model.Post;
 
 import java.util.List;
 import java.util.UUID;

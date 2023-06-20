@@ -1,9 +1,9 @@
-package com.graphdemo.graphdemo.graphql;
+package com.graphdemo.graphql.graphql;
 
-import com.graphdemo.graphdemo.dao.AuthorDao;
-import com.graphdemo.graphdemo.dao.PostDao;
-import com.graphdemo.graphdemo.model.Author;
-import com.graphdemo.graphdemo.model.Post;
+import com.graphdemo.graphql.dao.AuthorDao;
+import com.graphdemo.graphql.dao.PostDao;
+import com.graphdemo.graphql.model.Author;
+import com.graphdemo.graphql.model.Post;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

@@ -2,6 +2,7 @@ package com.graphdemo.graphql.dao;
 
 import com.graphdemo.graphql.model.Post;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -14,10 +15,7 @@ public class PostDao {
     }
 
     public List<Post> getRecentPosts(int count, int offset) {
-        return posts.stream()
-                .skip(offset)
-                .limit(count)
-                .collect(Collectors.toList());
+        return new ArrayList<>();
     }
 
     public List<Post> getAuthorPosts(String author) {

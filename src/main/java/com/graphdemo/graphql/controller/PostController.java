@@ -30,8 +30,10 @@ public class PostController {
     }
 
     @QueryMapping
-    @RequestMapping(path = "/graphql", method = RequestMethod.POST)
-    public List<Post> recentPosts(@Argument int count, @Argument int offset) {
+//    @RequestMapping(path = "/graphql", method = RequestMethod.POST)
+    public List<Post> recentPosts(@Argument Integer count, @Argument Integer offset) {
+        count = 1;
+        offset = 1;
         return postDao.getRecentPosts(count, offset);
     }
 
@@ -46,7 +48,7 @@ public class PostController {
     }
 
     @MutationMapping
-    @RequestMapping(path = "/graphql/createPost", method = RequestMethod.POST)
+//    @RequestMapping(path = "/graphql/createPost", method = RequestMethod.POST)
     public Post createPost(@RequestBody @Argument String title, @Argument String text,
                            @Argument String category, @Argument String authorId) {
         Post post = new Post();

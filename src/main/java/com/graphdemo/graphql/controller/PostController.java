@@ -4,21 +4,24 @@ import com.graphdemo.graphql.dao.AuthorDao;
 import com.graphdemo.graphql.dao.PostDao;
 import com.graphdemo.graphql.model.Author;
 import com.graphdemo.graphql.model.Post;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
 
-@Controller
+@RestController
 public class PostController {
 
+    @Autowired
     private final PostDao postDao;
+
+    @Autowired
     private final AuthorDao authorDao;
 
     public PostController(PostDao postDao, AuthorDao authorDao) {
@@ -27,7 +30,7 @@ public class PostController {
     }
 
     @QueryMapping
-    @PostMapping("/graphql")
+    @RequestMapping(path = "/graphql", method = RequestMethod.POST)
     public List<Post> recentPosts(@Argument int count, @Argument int offset) {
         return postDao.getRecentPosts(count, offset);
     }
@@ -43,7 +46,7 @@ public class PostController {
     }
 
     @MutationMapping
-    @PostMapping("/graphql")
+    @RequestMapping(path = "/graphql/createPost", method = RequestMethod.POST)
     public Post createPost(@RequestBody @Argument String title, @Argument String text,
                            @Argument String category, @Argument String authorId) {
         Post post = new Post();
